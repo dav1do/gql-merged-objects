@@ -1,0 +1,18 @@
+[package]
+name = "gql-examples"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-graphql = "=4.0.3" # =4.0.4 for Object error
+
+[features]
+default = []
+sub = []
+
+[[bin]]
+name = "gql-examples"
+path = "src/main.rs"

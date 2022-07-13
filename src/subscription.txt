@@ -1,0 +1,60 @@
+  Compiling gql-examples v0.1.0 (/Users/david/mystuff/random/gql-examples)
+error[E0412]: cannot find type `E` in this scope
+   --> src/main.rs:78:74
+    |
+78  |     pub struct Subscription<E: GqlError>(SubscriptionA<E>, SubscriptionB<E>);
+    |                                                                          ^
+    |
+   ::: /Users/david/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/cmp.rs:286:1
+    |
+286 | pub trait Eq: PartialEq<Self> {
+    | ----------------------------- similarly named trait `Eq` defined here
+    |
+help: a trait with a similar name exists
+    |
+78  |     pub struct Subscription<E: GqlError>(SubscriptionA<E>, SubscriptionB<Eq>);
+    |                                                                          ~~
+help: you might be missing a type parameter
+    |
+77  |     #[derive(Default, MergedSubscription<E>)]
+    |                                         +++
+
+error[E0412]: cannot find type `E` in this scope
+   --> src/main.rs:78:56
+    |
+78  |     pub struct Subscription<E: GqlError>(SubscriptionA<E>, SubscriptionB<E>);
+    |                                                        ^
+    |
+   ::: /Users/david/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/cmp.rs:286:1
+    |
+286 | pub trait Eq: PartialEq<Self> {
+    | ----------------------------- similarly named trait `Eq` defined here
+    |
+help: a trait with a similar name exists
+    |
+78  |     pub struct Subscription<E: GqlError>(SubscriptionA<Eq>, SubscriptionB<E>);
+    |                                                        ~~
+help: you might be missing a type parameter
+    |
+77  |     #[derive(Default, MergedSubscription<E>)]
+    |                                         +++
+
+error[E0107]: missing generics for struct `subscription::Subscription`
+  --> src/main.rs:78:16
+   |
+78 |     pub struct Subscription<E: GqlError>(SubscriptionA<E>, SubscriptionB<E>);
+   |                ^^^^^^^^^^^^ expected 1 generic argument
+   |
+note: struct defined here, with 1 generic parameter: `E`
+  --> src/main.rs:78:16
+   |
+78 |     pub struct Subscription<E: GqlError>(SubscriptionA<E>, SubscriptionB<E>);
+   |                ^^^^^^^^^^^^ -
+help: add missing generic argument
+   |
+78 |     pub struct Subscription<E><E: GqlError>(SubscriptionA<E>, SubscriptionB<E>);
+   |                ~~~~~~~~~~~~~~~
+
+Some errors have detailed explanations: E0107, E0412.
+For more information about an error, try `rustc --explain E0107`.
+error: could not compile `gql-examples` due to 3 previous errors

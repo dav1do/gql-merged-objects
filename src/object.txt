@@ -1,0 +1,72 @@
+error: expected one of `,`, `:`, `=`, or `>`, found `<`
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/schema.rs:49:31
+   |
+49 | pub struct SchemaBuilder<Query<E>, Mutation<E>, Subscription<E>> where E: GqlError + 'static {
+   |                               ^ expected one of `,`, `:`, `=`, or `>`
+
+error[E0432]: unresolved import `crate::schema::IntrospectionMode`
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/request.rs:11:5
+   |
+11 |     schema::IntrospectionMode,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ no `IntrospectionMode` in `schema`
+
+error[E0432]: unresolved imports `crate::schema::IntrospectionMode`, `crate::schema::SchemaEnv`
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/context.rs:27:14
+   |
+27 |     schema::{IntrospectionMode, SchemaEnv},
+   |              ^^^^^^^^^^^^^^^^^  ^^^^^^^^^ no `SchemaEnv` in `schema`
+   |              |
+   |              no `IntrospectionMode` in `schema`
+
+error[E0432]: unresolved import `crate::schema::IntrospectionMode`
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/types/query_root.rs:10:5
+   |
+10 |     schema::IntrospectionMode,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ no `IntrospectionMode` in `schema`
+
+error[E0432]: unresolved import `crate::schema::IntrospectionMode`
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/registry/mod.rs:17:5
+   |
+17 |     schema::IntrospectionMode,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ no `IntrospectionMode` in `schema`
+
+error[E0432]: unresolved imports `schema::IntrospectionMode`, `schema::Schema`, `schema::SchemaBuilder`, `schema::SchemaEnv`
+   --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/lib.rs:243:18
+    |
+243 | pub use schema::{IntrospectionMode, Schema, SchemaBuilder, SchemaEnv};
+    |                  ^^^^^^^^^^^^^^^^^  ^^^^^^  ^^^^^^^^^^^^^  ^^^^^^^^^ no `SchemaEnv` in `schema`
+    |                  |                  |       |
+    |                  |                  |       no `SchemaBuilder` in `schema`
+    |                  |                  no `Schema` in `schema`
+    |                  no `IntrospectionMode` in `schema`
+
+error[E0392]: parameter `Query` is never used
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/http/websocket.rs:73:29
+   |
+73 |     pub struct WebSocket<S, Query, Mutation, Subscription, OnInit> {
+   |                             ^^^^^ unused parameter
+   |
+   = help: consider removing `Query`, referring to it in a field, or using a marker such as `PhantomData`
+   = help: if you intended `Query` to be a const parameter, use `const Query: usize` instead
+
+error[E0392]: parameter `Mutation` is never used
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/http/websocket.rs:73:36
+   |
+73 |     pub struct WebSocket<S, Query, Mutation, Subscription, OnInit> {
+   |                                    ^^^^^^^^ unused parameter
+   |
+   = help: consider removing `Mutation`, referring to it in a field, or using a marker such as `PhantomData`
+   = help: if you intended `Mutation` to be a const parameter, use `const Mutation: usize` instead
+
+error[E0392]: parameter `Subscription` is never used
+  --> /Users/david/.cargo/registry/src/github.com-1ecc6299db9ec823/async-graphql-4.0.4/src/http/websocket.rs:73:46
+   |
+73 |     pub struct WebSocket<S, Query, Mutation, Subscription, OnInit> {
+   |                                              ^^^^^^^^^^^^ unused parameter
+   |
+   = help: consider removing `Subscription`, referring to it in a field, or using a marker such as `PhantomData`
+   = help: if you intended `Subscription` to be a const parameter, use `const Subscription: usize` instead
+
+Some errors have detailed explanations: E0392, E0432.
+For more information about an error, try `rustc --explain E0392`.
+error: could not compile `async-graphql` due to 9 previous errors
